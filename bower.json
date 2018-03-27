@@ -1,0 +1,21 @@
+{
+  "name": "my-music",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Pengzhou Li <ipengzhou@outlook.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1"
+  }
+}

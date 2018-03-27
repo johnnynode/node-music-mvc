@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的歌单</title>
+</head>
+<body>
+<h1>首页</h1>
+<a href="/add">点击添加歌曲</a>
+<table>
+  <thead>
+  <th>编号</th>
+  <th>名称</th>
+  <th>歌手</th>
+  <th>302K?</th>
+  <th>操作</th>
+  </thead>
+  <tbody>
+
+  <% musicList.forEach(function(item){ %>
+  <tr>
+    <td><%= item.id %></td>
+    <td><%= item.name %></td>
+    <td><%= item.singer %></td>
+    <td>
+      <% if(item.isHightRate){%>
+      <input type="radio" checked>是
+      <input type="radio">否
+      <%}else{%>
+      <input type="radio">是
+      <input type="radio" checked>否
+      <%} %>
+    </td>
+    <td>
+      <a href="/edit/<%= item.id %>">编辑</a>
+      <a href="JavaScript:remove('/remove/<%= item.id %>')">删除</a>
+    </td>
+  </tr>
+  <%}); %>
+
+
+  </tbody>
+</table>
+<script src="/www/vender/jquery/dist/jquery.js"></script>
+<script>
+
+  function remove(url) {
+    if (!confirm('您确定要删除吗？')) {
+      return;
+    }
+
+    $.ajax({
+      url: url,
+      type: 'GET',
+      success: function (data) {
+        {
+          var jsonObj = JSON.parse(data);
+          if (jsonObj.code == '1') {
+            // 表示删除成功
+            // 删除成功之后
+            window.location.reload('/');
+          } else if (jsonObj.code == '0') {
+            alert('删除失败');
+            console.log(data.msg);
+          }
+        }
+      }
+    });
+  }
+
+</script>
+</body>
+</html>
