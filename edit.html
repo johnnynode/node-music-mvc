@@ -2,37 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>我的歌单 - 编辑</title>
+  <title>Music - edit</title>
+  <style>
+    .music-box {
+      width: 700px;
+      margin:100px auto;
+    }
+  </style>
 </head>
 <body>
-
-<form action="/edit/<%= musicInfo.id %>" method="post">
-  <p>
-    <label for="">编号</label>
-    <input type="text" name="id" disabled value="<%= musicInfo.id %>">
-  </p>
-  <p>
-    <label for="">名称</label>
-    <input type="text" name="name" value="<%= musicInfo.name %>">
-  </p>
-  <p>
-    <label for="">歌手</label>
-    <input type="text" name="singer" value="<%= musicInfo.singer %>">
-  </p>
-  <p>
-    <label for="">高码率</label>
-    <% if(musicInfo.isHightRate){ %>
-      <input type="radio" name="isHightRate" checked value="1">是
-      <input type="radio" name="isHightRate" value="0">否
-    <% }else { %>
-      <input type="radio" name="isHightRate" value="1">是
-      <input type="radio" name="isHightRate" checked value="0">否
-    <% } %>
-  </p>
-  <p>
-    <input type="submit" value="确认修改">
-  </p>
-</form>
-
+    <div class="music-box">
+        edit page
+        <hr>
+        <form action="/edit/<%= musicInfo.id %>" method="post">
+          <input name="id" type="hidden" value="<%= musicInfo.id %>">
+          <p>
+            <label for="">Song</label>
+            <input type="text" name="name" value="<%= musicInfo.name %>">
+          </p>
+          <p>
+            <label for="">Author</label>
+            <input type="text" name="singer" value="<%= musicInfo.singer %>">
+          </p>
+          <p>
+            <label for="">High</label>
+            <% if(musicInfo.isHightRate){ %>
+              <input type="radio" name="isHightRate" checked value="1">Yes
+              <input type="radio" name="isHightRate" value="0">No
+            <% }else { %>
+              <input type="radio" name="isHightRate" value="1">Yes
+              <input type="radio" name="isHightRate" checked value="0">No
+            <% } %>
+          </p>
+          <p>
+            <input type="submit" value="submit">
+          </p>
+        </form>
+    </div>
 </body>
 </html>

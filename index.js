@@ -10,32 +10,32 @@ const _ = require('underscore');
 const musicList = [
   {
     id: '1',
-    name: '演员',
-    singer: '薛之谦',
+    name: 'music1',
+    singer: 'singer1',
     isHightRate: true
   },
   {
     id: '2',
-    name: '丑八怪',
-    singer: '薛之谦',
+    name: 'music2',
+    singer: 'singer2',
     isHightRate: false
   },
   {
     id: '3',
-    name: 'Fade',
-    singer: 'Alan Walker',
+    name: 'music3',
+    singer: 'singer3',
     isHightRate: true
   },
   {
     id: '4',
-    name: '想着你的感觉',
-    singer: '容祖儿',
+    name: 'music4',
+    singer: 'singer4',
     isHightRate: true
   },
   {
     id: '5',
-    name: '叽咕叽咕',
-    singer: '徐佳莹',
+    name: 'music4',
+    singer: 'singer4',
     isHightRate: false
   }
 ];
@@ -111,7 +111,7 @@ const server = http.createServer((req, res) => {
       });
 
       res.writeHead(302, {
-        'Location': 'http://192.168.3.12:3000/'
+        'Location': 'http://127.0.0.1:3000'
       });
 
       res.end();
@@ -193,7 +193,7 @@ const server = http.createServer((req, res) => {
       // 302 重定向   临时重定向
 
       res.writeHead(302, {
-        'Location': 'http://192.168.3.12:3000/'
+        'Location': 'http://127.0.0.1:3000'
       });
 
       // 记住，哪怕只写了响应头，也一定要end

@@ -2,53 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>我的歌单</title>
+  <title>Music</title>
+  <style>
+    .music-box {
+      width: 700px;
+      margin:100px auto;
+    }
+    .music-box table{
+      width:100%;
+      text-align: center;
+    }
+    .music-box .add-btn {
+      float:right;
+      padding: 10px 0;
+    }
+  </style>
 </head>
 <body>
-<h1>首页</h1>
-<a href="/add">点击添加歌曲</a>
-<table>
-  <thead>
-  <th>编号</th>
-  <th>名称</th>
-  <th>歌手</th>
-  <th>302K?</th>
-  <th>操作</th>
-  </thead>
-  <tbody>
-
-  <% musicList.forEach(function(item){ %>
-  <tr>
-    <td><%= item.id %></td>
-    <td><%= item.name %></td>
-    <td><%= item.singer %></td>
-    <td>
-      <% if(item.isHightRate){%>
-      <input type="radio" checked>是
-      <input type="radio">否
-      <%}else{%>
-      <input type="radio">是
-      <input type="radio" checked>否
-      <%} %>
-    </td>
-    <td>
-      <a href="/edit/<%= item.id %>">编辑</a>
-      <a href="JavaScript:remove('/remove/<%= item.id %>')">删除</a>
-    </td>
-  </tr>
-  <%}); %>
-
-
-  </tbody>
-</table>
+  <div class="music-box">
+    index page
+    <hr>
+    <a class='add-btn' href="/add">click here to add a song</a>
+    <table>
+        <thead>
+        <th>Number</th>
+        <th>Song</th>
+        <th>Singer</th>
+        <th>High</th>
+        <th>Operation</th>
+        </thead>
+        <tbody>
+        <% musicList.forEach(function(item){ %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= item.name %></td>
+          <td><%= item.singer %></td>
+          <td>
+            <% if(item.isHightRate){%>
+            <input disabled type="radio" checked>Yes
+            <input disabled type="radio">No
+            <%}else{%>
+            <input disabled type="radio">Yes
+            <input disabled type="radio" checked>No
+            <%} %>
+          </td>
+          <td>
+            <a href="/edit/<%= item.id %>">edit</a>
+            <a href="JavaScript:remove('/remove/<%= item.id %>')">delete</a>
+          </td>
+        </tr>
+        <%}); %>
+        </tbody>
+      </table>
+  </div>
+</body>
+</html>
 <script src="/www/vender/jquery/dist/jquery.js"></script>
 <script>
-
   function remove(url) {
-    if (!confirm('您确定要删除吗？')) {
+    if (!confirm('Really to delete？')) {
       return;
     }
-
     $.ajax({
       url: url,
       type: 'GET',
@@ -56,18 +70,12 @@
         {
           var jsonObj = JSON.parse(data);
           if (jsonObj.code == '1') {
-            // 表示删除成功
-            // 删除成功之后
             window.location.reload('/');
           } else if (jsonObj.code == '0') {
-            alert('删除失败');
-            console.log(data.msg);
+            alert('delete fail');
           }
         }
       }
     });
   }
-
 </script>
-</body>
-</html>

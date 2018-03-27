@@ -2,30 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>我的歌单 - 添加歌曲</title>
+  <title>Music - add</title>
+  <style>
+  .music-box {
+      width: 700px;
+      margin:100px auto;
+    }
+  </style>
 </head>
 <body>
-<form action="/add" method="post">
-  <p>
-    <label for="">编号</label>
-    <input type="text" name="id">
-  </p>
-  <p>
-    <label for="">名称</label>
-    <input type="text" name="name">
-  </p>
-  <p>
-    <label for="">歌手</label>
-    <input type="text" name="singer">
-  </p>
-  <p>
-    <label for="">高码率</label>
-    <input type="radio" name="isHightRate" value="1">是
-    <input type="radio" name="isHightRate" value="0">否
-  </p>
-  <p>
-    <input type="submit" value="点击添加">
-  </p>
-</form>
+  <div class="music-box">
+      add page
+      <hr>
+      <form action="/add" method="post">
+        <p>
+          <label for="">Number</label>
+          <input type="text" name="id">
+        </p>
+        <p>
+          <label for="">Song</label>
+          <input type="text" name="name">
+        </p>
+        <p>
+          <label for="">Singer</label>
+          <input type="text" name="singer">
+        </p>
+        <p>
+          <label for="">High</label>
+          <input type="radio" name="isHightRate" value="1">Yes
+          <input type="radio" name="isHightRate" value="0">No
+        </p>
+        <p>
+          <input type="submit" value="Add">
+        </p>
+      </form>
+  </div>
 </body>
 </html>
