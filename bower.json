@@ -1,9 +1,9 @@
 {
-  "name": "my-music",
+  "name": "music",
   "description": "",
   "main": "index.js",
   "authors": [
-    "Pengzhou Li <ipengzhou@outlook.com>"
+    ""
   ],
   "license": "ISC",
   "moduleType": [],
