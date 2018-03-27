@@ -54,7 +54,7 @@ const server = http.createServer((req, res) => {
 
   if (pathname === '/') {
 
-    fs.readFile('./index.html', 'utf8', function (err, data) {
+    fs.readFile('./views/index.html', 'utf8', function (err, data) {
       if (err) {
         return res.end(err.message);
       }
@@ -76,7 +76,7 @@ const server = http.createServer((req, res) => {
 
   } else if (method === 'GET' && pathname === '/add') {
 
-    fs.readFile('./add.html', 'utf8', function (err, data) {
+    fs.readFile('./views/add.html', 'utf8', function (err, data) {
       if (err) {
         return res.end(err.message);
       }
@@ -150,7 +150,7 @@ const server = http.createServer((req, res) => {
       return res.end('music is not exists');
     }
 
-    fs.readFile('./edit.html', 'utf8', function (err, data) {
+    fs.readFile('./views/edit.html', 'utf8', function (err, data) {
       if (err) {
         return res.end(err.message);
       }
