@@ -1,15 +1,10 @@
 var fs = require('fs');
 var url = require('url');
 var list = require('./list');
-var staticServer = require('./static');
+var staticServer = require('../static'); // 静态文件服务器
 
-var num = 0;
 var router = function (req, res, params) {
   var pathname = url.parse(req.url).pathname;
-  console.log('--------pathname--------');
-  console.log(++num);
-  console.log(pathname);
-  console.log('------------------------');
 
   // 关于静态文件服务器的判断
   if(pathname.startsWith('/assets/')) {
