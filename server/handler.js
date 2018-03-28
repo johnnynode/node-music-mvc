@@ -23,7 +23,7 @@ var handleMethod = function (req,data,callback) {
 var handler = (req,callback)=>{
   var data = [];
   req.on("error", function(err) {
-      console.error(err);
+      return console.error(err);
   }).on("data", function(chunk) {
       data.push(chunk);
   }).on('end', function() {

@@ -5,7 +5,9 @@ var handler = require('./handler');
 var List = function () {};
 var ltp = List.prototype = {};
 
-ltp["/"] = handler.home;
+
+// 以assets开头的
+ltp["/"] = handler.home; // 首页的路由
 ltp["/list"] = handler.list;
 ltp["/detail"] = handler.detail;
 

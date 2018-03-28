@@ -13,10 +13,12 @@ hdp.home = (res) => {
     'Content-Type':'text/html'
   });
 
+  // 读取文件
   fs.readFile(__dirname + '/../views/index.html', 'utf8', function (err, data) {
     if (err) {
       return res.end(err.message);
     }
+    // 结合模板引擎渲染数据
     let compiled = _.template(data);
     let htmlStr = compiled({
       musicList
@@ -25,6 +27,7 @@ hdp.home = (res) => {
     res.writeHead(200, {
       'Content-Type': 'text/html'
     });
+    // 返回给前台
     res.end(htmlStr);
   });
 
@@ -39,7 +42,6 @@ hdp.list = (res,params) => {
   res.writeHead(200,{
     'Content-Type':'text/html'
   });
-
 
   // fs.createReadStream(__dirname + '/../views/list.html', 'utf8').pipe(res);
 }
