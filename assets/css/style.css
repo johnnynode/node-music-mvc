@@ -1,0 +1,12 @@
+.music-box {
+  width: 700px;
+  margin:100px auto;
+}
+.music-box table{
+  width:100%;
+  text-align: center;
+}
+.music-box .add-btn {
+  float:right;
+  padding: 10px 0;
+}

@@ -3,20 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Music</title>
-  <style>
-    .music-box {
-      width: 700px;
-      margin:100px auto;
-    }
-    .music-box table{
-      width:100%;
-      text-align: center;
-    }
-    .music-box .add-btn {
-      float:right;
-      padding: 10px 0;
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
   <div class="music-box">
@@ -58,24 +45,4 @@
 </body>
 </html>
 <script src="/assets/lib/vender/jquery/dist/jquery.js"></script>
-<script>
-  function remove(url) {
-    if (!confirm('Really to delete？')) {
-      return;
-    }
-    $.ajax({
-      url: url,
-      type: 'GET',
-      success: function (data) {
-        {
-          var jsonObj = JSON.parse(data);
-          if (jsonObj.code == '1') {
-            window.location.reload('/');
-          } else if (jsonObj.code == '0') {
-            alert('delete fail');
-          }
-        }
-      }
-    });
-  }
-</script>
+<script src='/assets/js/index.js'></script>
