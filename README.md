@@ -21,3 +21,7 @@ A pure node project using MVC architecture
 $ node -v
 v9.9.0
 ```
+
+### License
+
+MIT &copy; [johnnynode](http://github.com/johnnynode)
