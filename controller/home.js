@@ -46,8 +46,8 @@ function render(res) {
 
 // 删除功能
 function remove(res, pathname) {
-  let m_id = pathname.match(removeReg)[1];
-  let index = musicList.findIndex(m => m.id === m_id);
+  let id = pathname.match(removeReg)[1] - 0;
+  let index = musicList.findIndex(m => m.id === id);
   try {
     musicList.splice(index, 1);
     res.end(JSON.stringify({
@@ -95,7 +95,7 @@ function add(res, pathname, params) {
 
 // 搜索功能的处理
 function search(res, pathname, params) {
-  let id = params.id;
+  let id = params.id - 0;
 
   // 查找
   let musicItem = null;
