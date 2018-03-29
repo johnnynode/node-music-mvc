@@ -99,18 +99,10 @@ function add(res, pathname, params) {
 // 搜索功能的处理
 function search(res, pathname, params) {
   let id = params.id - 0;
-
-  // 查找
-  let musicItem = null;
-  let hasMusic = musicList.find((item, index)=>{
-    if(item.id === id) {
-      musicItem = item;
-      return true;
-    }
-  });
+  let musicInfo = music.getMusicById(id);
 
   // 不存在音乐 返回 不存在
-  if (!hasMusic) {
+  if (!musicInfo) {
     return res.end('music is not exists');
   }
 
@@ -118,5 +110,5 @@ function search(res, pathname, params) {
   res.writeHead(200, {
     'Content-Type': 'application/json; charset=utf-8'
   });
-  res.end(JSON.stringify(musicItem));
+  res.end(JSON.stringify(musicInfo));
 }
