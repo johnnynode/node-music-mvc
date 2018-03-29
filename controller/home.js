@@ -5,7 +5,8 @@ const qstring = require('querystring');
 const _ = require('underscore');
 const removeReg = /^\/remove\/(\d{1,6})$/;
 const editReg = /^\/edit\/(\d{1,6})$/;
-const musicList = require('../server/mockData'); // 模拟首页假数据
+// const musicList = require('../server/mockData'); // 模拟首页假数据
+const music = require('../model/music');
 
 // ------------------------ 首页对象 ------------------------
 const Home = function() {};
@@ -32,6 +33,7 @@ function render(res) {
     }
     // 结合模板引擎渲染数据
     let compiled = _.template(data);
+    let musicList = music.getAllMusic(); // 通过model获取所有数据
     let htmlStr = compiled({
       musicList
     });
@@ -47,17 +49,18 @@ function render(res) {
 // 删除功能
 function remove(res, pathname) {
   let id = pathname.match(removeReg)[1] - 0;
-  let index = musicList.findIndex(m => m.id === id);
-  try {
-    musicList.splice(index, 1);
+  let flag = music.removeMusicById(id);
+  if(flag) {
+    // 删除成功
     res.end(JSON.stringify({
       code: '1',
       msg: 'ok'
     }));
-  } catch (e) {
+  } else {
+    // 删除失败
     res.end(JSON.stringify({
       code: '0',
-      msg: e.message
+      msg: 'not found'
     }));
   }
 }
