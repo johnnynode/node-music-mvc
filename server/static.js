@@ -1,5 +1,5 @@
 // 处理静态文件服务器
-'use strict';
+
 const fs = require('fs');
 const path = require('path');
 const mime = require('mime');

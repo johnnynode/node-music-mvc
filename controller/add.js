@@ -1,8 +1,4 @@
-'use strict';
-
 const music = require('../model/music');
-
-// ------------------------ 添加页对象 ------------------------
 
 class Add {
   add(res, pathname, params) {

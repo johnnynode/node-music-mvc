@@ -1,5 +1,3 @@
-'use strict';
-
 const music = require('../model/music');
 const editReg = /^\/edit\/(\d{1,6})$/;
 

@@ -1,5 +1,3 @@
-'use strict';
-
 let musicList = require('./data');
 
 class Music {

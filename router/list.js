@@ -1,5 +1,3 @@
-'use strict';
-
 const homeCtrl = require('../controller/home');
 const editCtrl = require('../controller/edit');
 const addCtrl = require('../controller/add');
