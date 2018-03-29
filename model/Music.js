@@ -34,7 +34,7 @@ Music.prototype = {
     musicList[index].name = name;
     musicList[index].singer = singer;
     musicList[index].isHightRate = isHightRate === '1';
-    return true;
+    return musicList[index];
   },
   // 通过id删除音乐
   removeMusicById:function (id) {
@@ -47,7 +47,9 @@ Music.prototype = {
   },
   // 通过id查询音乐
   getMusicById:function (id) {
-    return musicList.find(item => {item.id === id});
+    return musicList.find((item) => {
+      return item.id === id
+    });
   }
 }
 

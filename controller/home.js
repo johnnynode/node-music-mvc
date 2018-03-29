@@ -68,8 +68,9 @@ function remove(res, pathname) {
 // 编辑页面渲染
 function edit(res, pathname, params) {
   let id = pathname.match(editReg)[1] - 0;
-  let musicInfo = musicList.find(m => m.id === id);
-  if (!musicInfo) {
+  let musicList = music.getAllMusic(); // 通过model获取所有数据
+  var musicInfo = music.getMusicById(id);
+  if(!musicInfo) {
     return res.end('music is not exists');
   }
   fs.readFile(__dirname + '/../views/edit.html', 'utf8', function (err, data) {
