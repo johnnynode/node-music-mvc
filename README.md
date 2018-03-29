@@ -14,3 +14,10 @@ A pure node project using MVC architecture
 ### Run
 
 - $ `npm start` or `npm run start`
+
+### Node Environment
+
+```
+$ node -v
+v9.9.0
+```
