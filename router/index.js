@@ -1,7 +1,7 @@
 const fs = require('fs');
 const url = require('url');
 const routerList = require('./list');
-const staticServer = require('../static'); // 静态文件服务器
+const staticServer = require('../server/static'); // 静态文件服务器
 
 const router = function (req, res, params) {
   let pathname = url.parse(req.url).pathname;
