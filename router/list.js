@@ -1,11 +1,11 @@
 'use strict';
 
-var homeCtrl = require('../controller/home');
-var editCtrl = require('../controller/edit');
-var addCtrl = require('../controller/add');
+const homeCtrl = require('../controller/home');
+const editCtrl = require('../controller/edit');
+const addCtrl = require('../controller/add');
 
 // 定义路由列表
-var List = function () {};
+const List = function () {};
 List.prototype = {
   // 首页的处理
   '/': (res)=>{
@@ -41,7 +41,7 @@ List.prototype = {
 }
 
 // 获取自身全部路由列表
-var routerAttrList = Object.getOwnPropertyNames(List.prototype); 
+const routerAttrList = Object.getOwnPropertyNames(List.prototype); 
 
 // 对路由的判断
 function isRouter(pathname) {

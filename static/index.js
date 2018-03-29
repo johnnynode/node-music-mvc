@@ -1,7 +1,7 @@
 // 处理静态文件服务器
 'use strict';
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
 // 通过请求的后缀名来返回不同的 contentType
 function getContentTypeByExtName(extName, callback) {
@@ -18,7 +18,7 @@ function getContentTypeByExtName(extName, callback) {
     });
 }
 
-var staticServer = function (res, pathname) {
+const staticServer = function (res, pathname) {
   fs.readFile(__dirname + '/..' + pathname, 'utf8', function (err, data) {
     if (err) {
       return res.end(err.message);

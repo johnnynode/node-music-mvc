@@ -1,6 +1,6 @@
 'use strict';
 
-var fs = require('fs');
+const fs = require('fs');
 const qstring = require('querystring');
 const _ = require('underscore');
 const removeReg = /^\/remove\/(\d{1,6})$/;
@@ -8,7 +8,7 @@ const editReg = /^\/edit\/(\d{1,6})$/;
 const musicList = require('../server/mockData'); // 模拟首页假数据
 
 // ------------------------ 首页对象 ------------------------
-var Home = function() {};
+const Home = function() {};
 Home.prototype = {
   render: render, // 渲染页面
   remove: remove, // 删除
@@ -64,8 +64,8 @@ function remove(res, pathname) {
 
 // 编辑页面渲染
 function edit(res, pathname, params) {
-  let m_id = pathname.match(editReg)[1];
-  let musicInfo = musicList.find(m => m.id === m_id);
+  let id = pathname.match(editReg)[1] - 0;
+  let musicInfo = musicList.find(m => m.id === id);
   if (!musicInfo) {
     return res.end('music is not exists');
   }
@@ -95,12 +95,12 @@ function add(res, pathname, params) {
 
 // 搜索功能的处理
 function search(res, pathname, params) {
-  var singer = params.singer;
+  let id = params.id;
 
   // 查找
   let musicItem = null;
-  var hasMusic = musicList.find((item, index)=>{
-    if(item.singer === singer) {
+  let hasMusic = musicList.find((item, index)=>{
+    if(item.id === id) {
       musicItem = item;
       return true;
     }

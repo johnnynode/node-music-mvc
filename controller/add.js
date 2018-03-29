@@ -3,7 +3,7 @@
 const musicList = require('../server/mockData'); // 模拟首页假数据
 
 // ------------------------ 编辑页对象 ------------------------
-var Add = function() {};
+const Add = function() {};
 Add.prototype = {
   add: add // 提交功能
 };
@@ -25,7 +25,7 @@ function add(res, pathname, params) {
     singer,
     isHightRate
   });
-  
+
   res.writeHead(302, {
     'Location': '/'
   });

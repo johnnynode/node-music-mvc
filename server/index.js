@@ -1,10 +1,10 @@
 "use strict";
 
-var http = require('http');
-var router = require('../router');
-var handler = require('./handler');
+const http = require('http');
+const router = require('../router');
+const handler = require('./handler');
 
-var start = function () {
+const start = function () {
   var server = http.createServer((req, res)=>{
     handler(req, (params)=>{
       router(req, res, params);

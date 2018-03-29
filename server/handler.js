@@ -1,7 +1,7 @@
-var querystring = require('querystring');
-var url = require('url');
+const querystring = require('querystring');
+const url = require('url');
 
-var handleMethod = function (req,data,callback) {
+let handleMethod = function (req,data,callback) {
   switch(req.method) {
     case "GET":
       var query = url.parse(req.url, true).query; // true json, false string here
@@ -26,7 +26,7 @@ var handleMethod = function (req,data,callback) {
   }
 }
 
-var handler = (req,callback)=>{
+let handler = (req,callback)=>{
   var data = [];
   req.on("error", function(err) {
       return console.error(err);

@@ -4,7 +4,7 @@ const editReg = /^\/edit\/(\d{1,6})$/;
 const musicList = require('../server/mockData'); // 模拟首页假数据
 
 // ------------------------ 编辑页对象 ------------------------
-var Edit = function() {};
+const Edit = function() {};
 Edit.prototype = {
   edit: edit // 提交功能
 };
@@ -14,13 +14,13 @@ module.exports = new Edit();
 
 // 处理post请求
 function edit(res, pathname, params) {
-  let m_id = pathname.match(editReg)[1];
+  let id = pathname.match(editReg)[1] - 0;
   let name = params.name;
   let singer = params.singer;
   let isHightRate = params.isHightRate;
 
   // 根据id查找数组中的索引
-  let index = musicList.findIndex(m => m.id === m_id);
+  let index = musicList.findIndex(m => m.id === id);
 
   musicList[index].name = name;
   musicList[index].singer = singer;

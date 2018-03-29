@@ -1,10 +1,10 @@
-var fs = require('fs');
-var url = require('url');
-var routerList = require('./list');
-var staticServer = require('../static'); // 静态文件服务器
+const fs = require('fs');
+const url = require('url');
+const routerList = require('./list');
+const staticServer = require('../static'); // 静态文件服务器
 
-var router = function (req, res, params) {
-  var pathname = url.parse(req.url).pathname;
+const router = function (req, res, params) {
+  let pathname = url.parse(req.url).pathname;
 
   // 关于静态文件服务器的判断
   if(pathname.startsWith('/assets/')) {
@@ -12,7 +12,7 @@ var router = function (req, res, params) {
   }
 
   // 得到是否存在定义的路由
-  var routerItem = routerList.isRouter(pathname);
+  let routerItem = routerList.isRouter(pathname);
   // 如果定义了该路由，那么执行定义路由的回调函数
   if(routerItem) {
     return routerList.list[routerItem](res, pathname, params, req.method); 
