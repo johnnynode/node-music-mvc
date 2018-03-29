@@ -6,7 +6,7 @@ const editReg = /^\/edit\/(\d{1,6})$/;
 // ------------------------ 编辑页对象 ------------------------
 const Edit = function() {};
 Edit.prototype = {
-  edit: edit // 提交功能
+  edit // 提交功能
 };
 module.exports = new Edit();
 

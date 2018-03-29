@@ -2,10 +2,10 @@
 
 const music = require('../model/music');
 
-// ------------------------ 编辑页对象 ------------------------
+// ------------------------ 添加页对象 ------------------------
 const Add = function() {};
 Add.prototype = {
-  add: add // 提交功能
+  add // 提交功能
 };
 module.exports = new Add();
 

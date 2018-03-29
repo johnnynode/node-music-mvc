@@ -10,11 +10,11 @@ const editReg = /^\/edit\/(\d{1,6})$/;
 // ------------------------ 首页对象 ------------------------
 const Home = function() {};
 Home.prototype = {
-  render: render, // 渲染页面
-  remove: remove, // 删除
-  edit: edit, // 编辑功能,
-  add: add, // 添加
-  search: search // 搜索
+  render, // 渲染页面
+  remove, // 删除
+  edit, // 编辑功能,
+  add, // 添加
+  search // 搜索
 };
 module.exports = new Home();
 
