@@ -1,7 +1,7 @@
 'use strict';
 
 const editReg = /^\/edit\/(\d{1,6})$/;
-const musicList = require('../server/mockData'); // 模拟首页假数据
+const music = require('../model/music');
 
 // ------------------------ 编辑页对象 ------------------------
 const Edit = function() {};
@@ -19,18 +19,14 @@ function edit(res, pathname, params) {
   let singer = params.singer;
   let isHightRate = params.isHightRate;
 
-  // 根据id查找数组中的索引
-  let index = musicList.findIndex(m => m.id === id);
-
-  musicList[index].name = name;
-  musicList[index].singer = singer;
-  musicList[index].isHightRate = isHightRate === '1';
+  let musicList = music.getAllMusic();
+  let flag = music.editMusicById(id,name,singer,isHightRate);
 
   // 修改完之后，直接跳转到首页
   // 301 重定向   永久重定向
   // 302 重定向   临时重定向
   res.writeHead(302, {
-    'Location': '/'
+    'Location': flag ? '/' : '/edit' + id
   });
 
   // 记住，哪怕只写了响应头，也一定要end

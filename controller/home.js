@@ -5,7 +5,6 @@ const qstring = require('querystring');
 const _ = require('underscore');
 const removeReg = /^\/remove\/(\d{1,6})$/;
 const editReg = /^\/edit\/(\d{1,6})$/;
-// const musicList = require('../server/mockData'); // 模拟首页假数据
 const music = require('../model/music');
 
 // ------------------------ 首页对象 ------------------------

@@ -34,7 +34,7 @@ Music.prototype = {
     musicList[index].name = name;
     musicList[index].singer = singer;
     musicList[index].isHightRate = isHightRate === '1';
-    return musicList[index];
+    return true;
   },
   // 通过id删除音乐
   removeMusicById:function (id) {
