@@ -12,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "mime": "^2.2.0"
   }
 }
