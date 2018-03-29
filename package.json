@@ -1,5 +1,5 @@
 {
-  "name": "my-music",
+  "name": "node-music-mvc@https://github.com/johnnynode",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "underscore": "^1.8.3"
   },
