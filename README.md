@@ -13,4 +13,4 @@ A pure node project using MVC architecture
 
 ### Run
 
-- $ `node index`
+- $ `npm start` or `npm run start`
