@@ -5,36 +5,35 @@ const editCtrl = require('../controller/edit');
 const addCtrl = require('../controller/add');
 
 // 定义路由列表
-const List = function () {};
-List.prototype = {
+class List {
   // 首页的处理
-  '/': (res)=>{
+  '/' (res) {
     homeCtrl.render(res);
-  },
+  }
   // 首页删除功能的处理
-  '/remove': (res, pathname)=>{
+  '/remove' (res, pathname) {
     homeCtrl.remove(res, pathname);
-  },
+  }
   // 编辑的处理 如： /edit/1
-  '/edit': (res, pathname, params, method) => {
+  '/edit' (res, pathname, params, method) {
     if(method === 'GET') {
       return homeCtrl.edit(res, pathname, params);
     }
     if(method === 'POST') {
       editCtrl.edit(res, pathname, params);
     }
-  },
+  }
   // 添加的处理
-  '/add' : (res, pathname, params, method) => {
+  '/add' (res, pathname, params, method) {
     if(method === 'GET') {
       return homeCtrl.add(res, pathname, params);
     }
     if(method === 'POST') {
       return addCtrl.add(res, pathname, params);
     }
-  },
+  }
   // 搜索的处理
-  '/search' : (res, pathname, params) => {
+  '/search' (res, pathname, params) {
     homeCtrl.search(res, pathname, params);
   }
 }
