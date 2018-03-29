@@ -16,7 +16,13 @@ var handleMethod = function (req,data,callback) {
       var params = querystring.parse(data);
       callback(params);
       break;
+    case "DELETE":
+      var query = url.parse(req.url, true).query; // true json, false string here
+      callback(query);
+      break;
+    
       // other method here to be handled
+    
   }
 }
 

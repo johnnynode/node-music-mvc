@@ -1,6 +1,6 @@
 var fs = require('fs');
 var url = require('url');
-var list = require('./list');
+var routerList = require('./list');
 var staticServer = require('../static'); // 静态文件服务器
 
 var router = function (req, res, params) {
@@ -11,11 +11,13 @@ var router = function (req, res, params) {
     return staticServer(res, pathname);
   }
 
-  var itemRouter = list[pathname];
-  // 如果定义了相应的路由，就执行路由
-  if (typeof itemRouter === 'function') {
-    return itemRouter(res, params);
-  } 
+  // 得到是否存在定义的路由
+  var routerItem = routerList.isRouter(pathname);
+  // 如果定义了该路由，那么执行定义路由的回调函数
+  if(routerItem) {
+    console.log(routerItem);
+    return routerList.list[routerItem](res, pathname); 
+  }
   
   // 没定义路由，那么返回404页面
   res.writeHead(404, { 'Content-Type': 'text/html' });

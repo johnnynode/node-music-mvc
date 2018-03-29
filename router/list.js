@@ -1,14 +1,36 @@
 'use strict';
 
-var handler = require('./handler');
+var homeCtrl = require('../controller/home');
 
+// 定义路由列表
 var List = function () {};
-var ltp = List.prototype = {};
+List.prototype = {
+  // 首页的处理
+  '/': (res)=>{
+    homeCtrl.render(res);
 
+  },
+  // 删除的处理
+  '/remove': (res,pathname)=>{
+    homeCtrl.remove(res, pathname);
+  }
+}
 
-// 以assets开头的
-ltp["/"] = handler.home; // 首页的路由
-ltp["/list"] = handler.list;
-ltp["/detail"] = handler.detail;
+// 获取自身全部路由列表
+var routerAttrList = Object.getOwnPropertyNames(List.prototype); 
 
-module.exports = new List();
+// 对路由的判断
+function isRouter(pathname) {
+  return routerAttrList.find((item, index)=>{
+    // 如果匹配，把当前定义的路由返回
+    if(pathname === item || pathname.startsWith(item) && (item !== '/')) {
+      return item;
+    }
+  });
+}
+
+module.exports = {
+  isRouter,
+  routerAttrList,
+  list: new List()
+};

@@ -4,16 +4,14 @@ function remove(url) {
   }
   $.ajax({
     url: url,
-    type: 'GET',
+    type: 'DELETE',
     success: function (data) {
-      {
-        var jsonObj = JSON.parse(data);
+      var jsonObj = JSON.parse(data);
         if (jsonObj.code == '1') {
           window.location.reload('/');
         } else if (jsonObj.code == '0') {
           alert('delete fail');
         }
-      }
     }
   });
 }
