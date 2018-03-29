@@ -3,9 +3,9 @@
 const fs = require('fs');
 const qstring = require('querystring');
 const _ = require('underscore');
+const music = require('../model/music');
 const removeReg = /^\/remove\/(\d{1,6})$/;
 const editReg = /^\/edit\/(\d{1,6})$/;
-const music = require('../model/music');
 
 // ------------------------ 首页对象 ------------------------
 const Home = function() {};

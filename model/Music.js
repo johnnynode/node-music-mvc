@@ -22,7 +22,14 @@ Music.prototype = {
       singer,
       isHightRate
     };
-    musicList.push(json);
+    var flag = false;
+    try{
+      musicList.push(json);
+      flag = true;
+    } catch(e){
+      console.log('add error');
+    }
+    return flag;
   },
   // 编辑一首音乐
   editMusicById:function (id, name, singer, isHightRate) {

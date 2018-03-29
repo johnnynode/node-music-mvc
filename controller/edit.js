@@ -1,7 +1,7 @@
 'use strict';
 
-const editReg = /^\/edit\/(\d{1,6})$/;
 const music = require('../model/music');
+const editReg = /^\/edit\/(\d{1,6})$/;
 
 // ------------------------ 编辑页对象 ------------------------
 const Edit = function() {};
