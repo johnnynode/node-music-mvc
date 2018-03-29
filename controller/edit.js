@@ -18,7 +18,6 @@ function edit(res, pathname, params) {
   let name = params.name;
   let singer = params.singer;
   let isHightRate = params.isHightRate;
-
   let musicList = music.getAllMusic();
   let flag = music.editMusicById(id,name,singer,isHightRate);
 
@@ -28,7 +27,6 @@ function edit(res, pathname, params) {
   res.writeHead(302, {
     'Location': flag ? '/' : '/edit' + id
   });
-
-  // 记住，哪怕只写了响应头，也一定要end
+  // 即使只写了响应头，也一定要end
   return res.end();
 }

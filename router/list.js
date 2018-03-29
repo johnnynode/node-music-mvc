@@ -10,7 +10,6 @@ List.prototype = {
   // 首页的处理
   '/': (res)=>{
     homeCtrl.render(res);
-
   },
   // 首页删除功能的处理
   '/remove': (res, pathname)=>{

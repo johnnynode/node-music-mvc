@@ -24,7 +24,6 @@ function render(res) {
   res.writeHead(200,{
     'Content-Type':'text/html'
   });
-
   // 读取文件
   fs.readFile(__dirname + '/../views/index.html', 'utf8', function (err, data) {
     if (err) {
@@ -100,12 +99,10 @@ function add(res, pathname, params) {
 function search(res, pathname, params) {
   let id = params.id - 0;
   let musicInfo = music.getMusicById(id);
-
   // 不存在音乐 返回 不存在
   if (!musicInfo) {
     return res.end('music is not exists');
   }
-
   // 存在音乐 返回 存在
   res.writeHead(200, {
     'Content-Type': 'application/json; charset=utf-8'
