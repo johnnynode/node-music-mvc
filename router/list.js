@@ -1,6 +1,7 @@
 'use strict';
 
 var homeCtrl = require('../controller/home');
+var editCtrl = require('../controller/edit');
 
 // 定义路由列表
 var List = function () {};
@@ -13,6 +14,15 @@ List.prototype = {
   // 删除的处理
   '/remove': (res,pathname)=>{
     homeCtrl.remove(res, pathname);
+  },
+  // 编辑的处理 如： /edit/1
+  '/edit': (res, pathname, params, method) => {
+    if(method === 'GET') {
+      return homeCtrl.edit(res, pathname, params);
+    }
+    if(method === 'POST') {
+      editCtrl.edit(res, pathname, params);
+    }
   }
 }
 

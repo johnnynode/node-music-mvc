@@ -4,13 +4,15 @@ var fs = require('fs');
 const qstring = require('querystring');
 const _ = require('underscore');
 const removeReg = /^\/remove\/(\d{1,6})$/;
+const editReg = /^\/edit\/(\d{1,6})$/;
 const musicList = require('../server/mockData'); // 模拟首页假数据
 
-// ------------------------ 构造函数 ------------------------
+// ------------------------ 首页对象 ------------------------
 var Home = function() {};
 Home.prototype = {
   render: render, // 渲染页面
-  remove: remove // 删除
+  remove: remove, // 删除
+  edit: edit // 编辑功能
 };
 module.exports = new Home();
 
@@ -58,3 +60,25 @@ function remove(res, pathname) {
   }
 }
 
+// 编辑页面渲染
+function edit(res, pathname, params) {
+  let m_id = pathname.match(editReg)[1];
+  let musicInfo = musicList.find(m => m.id === m_id);
+  if (!musicInfo) {
+    return res.end('music is not exists');
+  }
+  fs.readFile(__dirname + '/../views/edit.html', 'utf8', function (err, data) {
+    if (err) {
+      return res.end(err.message);
+    }
+    // 拿到数据之后，模板编译
+    let compiled = _.template(data);
+    let htmlStr = compiled({
+      musicInfo
+    });
+    res.writeHead(200, {
+      'Content-Type': 'text/html; charset=utf-8'
+    });
+    res.end(htmlStr);
+  });
+}

@@ -15,8 +15,7 @@ var router = function (req, res, params) {
   var routerItem = routerList.isRouter(pathname);
   // 如果定义了该路由，那么执行定义路由的回调函数
   if(routerItem) {
-    console.log(routerItem);
-    return routerList.list[routerItem](res, pathname); 
+    return routerList.list[routerItem](res, pathname, params, req.method); 
   }
   
   // 没定义路由，那么返回404页面
