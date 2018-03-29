@@ -12,7 +12,7 @@ List.prototype = {
 
   },
   // 删除的处理
-  '/remove': (res,pathname)=>{
+  '/remove': (res, pathname)=>{
     homeCtrl.remove(res, pathname);
   },
   // 编辑的处理 如： /edit/1
@@ -22,6 +22,12 @@ List.prototype = {
     }
     if(method === 'POST') {
       editCtrl.edit(res, pathname, params);
+    }
+  },
+  // 编辑
+  '/add' : (res, pathname, params, method) => {
+    if(method === 'GET') {
+      return homeCtrl.add(res, pathname, params);
     }
   }
 }

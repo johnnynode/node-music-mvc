@@ -12,7 +12,8 @@ var Home = function() {};
 Home.prototype = {
   render: render, // 渲染页面
   remove: remove, // 删除
-  edit: edit // 编辑功能
+  edit: edit, // 编辑功能,
+  add: add // 添加
 };
 module.exports = new Home();
 
@@ -81,4 +82,12 @@ function edit(res, pathname, params) {
     });
     res.end(htmlStr);
   });
+}
+
+// 添加页面渲染
+function add(res, pathname, params) {
+  res.writeHead(200,{
+    'Content-Type':'text/html'
+  });
+  fs.createReadStream(__dirname + '/../views/add.html', 'utf8').pipe(res);
 }
