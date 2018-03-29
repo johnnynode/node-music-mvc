@@ -9,7 +9,14 @@
   <div class="music-box">
     index page
     <hr>
-    <a class='add-btn' href="/add">click here to add a song</a>
+    <div class='clearfix'>
+      <form action="/search" method="post" class='left' style="padding-top:10px;">
+        <input type="text" name='singer' placeholder="please input a singer" />
+        <button type="submit">Search Singer Here</button>
+      </form>
+      <a class='add-btn right' href="/search?singer">click here to add a song</a>
+    </div>
+    
     <table>
         <thead>
         <th>Number</th>
@@ -35,7 +42,7 @@
           </td>
           <td>
             <a href="/edit/<%= item.id %>">edit</a>
-            <a href="JavaScript:remove('/remove/<%= item.id %>')">delete</a>
+            <a href="javascript:remove('/remove/<%= item.id %>')">delete</a>
           </td>
         </tr>
         <%}); %>

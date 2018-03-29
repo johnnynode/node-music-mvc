@@ -13,7 +13,8 @@ Home.prototype = {
   render: render, // 渲染页面
   remove: remove, // 删除
   edit: edit, // 编辑功能,
-  add: add // 添加
+  add: add, // 添加
+  search: search // 搜索
 };
 module.exports = new Home();
 
@@ -90,4 +91,29 @@ function add(res, pathname, params) {
     'Content-Type':'text/html'
   });
   fs.createReadStream(__dirname + '/../views/add.html', 'utf8').pipe(res);
+}
+
+// 搜索功能的处理
+function search(res, pathname, params) {
+  var singer = params.singer;
+
+  // 查找
+  let musicItem = null;
+  var hasMusic = musicList.find((item, index)=>{
+    if(item.singer === singer) {
+      musicItem = item;
+      return true;
+    }
+  });
+
+  // 不存在音乐 返回 不存在
+  if (!hasMusic) {
+    return res.end('music is not exists');
+  }
+
+  // 存在音乐 返回 存在
+  res.writeHead(200, {
+    'Content-Type': 'application/json; charset=utf-8'
+  });
+  res.end(JSON.stringify(musicItem));
 }

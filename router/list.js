@@ -2,6 +2,7 @@
 
 var homeCtrl = require('../controller/home');
 var editCtrl = require('../controller/edit');
+var addCtrl = require('../controller/add');
 
 // 定义路由列表
 var List = function () {};
@@ -11,7 +12,7 @@ List.prototype = {
     homeCtrl.render(res);
 
   },
-  // 删除的处理
+  // 首页删除功能的处理
   '/remove': (res, pathname)=>{
     homeCtrl.remove(res, pathname);
   },
@@ -24,11 +25,18 @@ List.prototype = {
       editCtrl.edit(res, pathname, params);
     }
   },
-  // 编辑
+  // 添加的处理
   '/add' : (res, pathname, params, method) => {
     if(method === 'GET') {
       return homeCtrl.add(res, pathname, params);
     }
+    if(method === 'POST') {
+      return addCtrl.add(res, pathname, params);
+    }
+  },
+  // 搜索的处理
+  '/search' : (res, pathname, params) => {
+    homeCtrl.search(res, pathname, params);
   }
 }
 
