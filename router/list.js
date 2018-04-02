@@ -16,19 +16,19 @@ class List {
   '/edit' (res, pathname, params, method) {
     if(method === 'GET') {
       return homeCtrl.edit(res, pathname, params);
-    }
-    if(method === 'POST') {
+    }else if(method === 'POST') {
       editCtrl.edit(res, pathname, params);
     }
+    // other possible methods
   }
   // 添加的处理
   '/add' (res, pathname, params, method) {
     if(method === 'GET') {
-      return homeCtrl.add(res, pathname, params);
+      homeCtrl.add(res, pathname, params);
+    } else if (method === 'POST') {
+      addCtrl.add(res, pathname, params);
     }
-    if(method === 'POST') {
-      return addCtrl.add(res, pathname, params);
-    }
+    // other possible methods
   }
   // 搜索的处理
   '/search' (res, pathname, params) {
