@@ -15,7 +15,7 @@ class List {
   // 编辑的处理 如： /edit/1
   '/edit' (res, pathname, params, method) {
     if(method === 'GET') {
-      return homeCtrl.edit(res, pathname, params);
+      homeCtrl.edit(res, pathname, params);
     }else if(method === 'POST') {
       editCtrl.edit(res, pathname, params);
     }
